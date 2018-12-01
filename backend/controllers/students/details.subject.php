@@ -20,9 +20,9 @@ if (isset($_GET['email']) && isset($_GET['token'])) {
             $subArray = json_decode($subJSON);
             $x = array();
 
-            foreach ($subArray as $id) {
-                var_dump($id);
-                $subject = new Subjects($id);
+            for ($i = 0; $i < count($subArray); $i++) {
+
+                $subject = new Subjects($subArray[$i]);
                 array_push($x, $subject->getSubjectsDetails());
             }
 
