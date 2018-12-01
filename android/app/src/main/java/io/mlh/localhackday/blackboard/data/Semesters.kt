@@ -10,7 +10,7 @@ data class Semesters(
     @PrimaryKey(autoGenerate = false)
     val semesterID: Long,
 
-    val semester: Short,
+    val Semester: Short,
     val section: Char,
     val subjects: String
 ) {
