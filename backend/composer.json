@@ -11,12 +11,15 @@
     "require": {
         "pushkar/php-useful": "^1.0",
         "pushkar/easy-router": "^0.1.2",
-      "ext-mysqli": "*"
+      "ext-mysqli": "*",
+        "ext-json": "*"
     },
 
     "autoload": {
         "files": [
-            "define/db.php"
+            "define/db.php",
+            "classes/DB.php",
+            "classes/Student.php"
         ]
     }
 }
