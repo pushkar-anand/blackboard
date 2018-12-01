@@ -10,8 +10,8 @@ if( isset($_POST['email']) && isset($_POST['password'])) {
     $email = Functions::escapeInput($_POST['email']);
     $pwd = $_POST['password'];
 
-    $student = new Teachers($email);
-    $studentDetails = $student->getTeachers();
+    $teachers = new Teachers($email);
+    $studentDetails = $teachers->getTeachers();
 
     if($studentDetails !== false && $studentDetails !== null) {
 
@@ -20,9 +20,9 @@ if( isset($_POST['email']) && isset($_POST['password'])) {
             $random = Functions::randomString(25);
             $time = time();
 
-            $student->updateToken($random, $time);
-            $student = new Teachers($email);
-            $studentDetails = $student->getTeachers();
+            $teachers->updateToken($random, $time);
+            $teachers = new Teachers($email);
+            $studentDetails = $teachers->getTeachers();
             unset($studentDetails['password']);
 
             EasyHeaders::json_header();

@@ -42,9 +42,24 @@ class Student
         $this->DB->updateSingle($this->table, $this->tokenGenField, $token_gen_time, $this->emailField, $this->email);
     }
 
-    public function verifyToken(int $student_id, string $token)
+    public function verifyToken(string $token)
     {
         $count = $this->DB->getResultCount($this->table, $this->emailField, $this->email);
+
+
+        if ($count > 0) {
+
+            $details = $this->DB->fetchRow($this->table, $this->emailField, $this->email);
+            error_log("Comparing: " . $details['token'] . " " . $token);
+
+            if ($details['token'] === $token) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
 
