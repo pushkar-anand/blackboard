@@ -1,5 +1,6 @@
 package io.mlh.localhackday.blackboard.repository
 
+import android.os.AsyncTask
 import io.mlh.localhackday.blackboard.api.StudentsAPI
 import io.mlh.localhackday.blackboard.api.Urls
 import io.mlh.localhackday.blackboard.data.Student
@@ -15,7 +16,21 @@ class StudentRepository {
                 .build()
                 .create(StudentsAPI::class.java)
 
-    fun getLoginResults(email: String, password: String): Call<Student>{
-        return retroService.getLoginResults(email, password)
+    fun getLoginResults(email: String, password: String): Student? {
+        return GetLoginResults(retroService).get()
+    }
+
+
+    private companion object {
+
+        class GetLoginResults(studentRetro: StudentsAPI): AsyncTask<Call<Student>, Void, Student>() {
+
+            override fun doInBackground(vararg params: Call<Student>?): Student {
+                val call = params[0];
+                return call?.execute()?.body()!!
+            }
+
+        }
+
     }
 }
