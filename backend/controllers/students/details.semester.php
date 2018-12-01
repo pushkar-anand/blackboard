@@ -1,8 +1,12 @@
 <?php
 
-if (isset($_GET['studentID']) && isset($_GET['token'])) {
 
-    $student_id = $_GET['studentID'];
+if (isset($_GET['email']) && isset($_GET['token'])) {
+
+    $email = \PhpUseful\Functions::escapeInput($_GET['email']);
+
+    $student = new Student($email);
+
 
 } else {
 
