@@ -2,6 +2,7 @@ package io.mlh.localhackday.blackboard.UI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import io.mlh.localhackday.blackboard.R
 
 class LauncherActivity : AppCompatActivity() {
 
