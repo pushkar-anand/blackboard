@@ -2,6 +2,7 @@ package io.mlh.localhackday.blackboard.repository
 
 import android.app.Application
 import android.os.AsyncTask
+import androidx.lifecycle.LiveData
 import io.mlh.localhackday.blackboard.api.StudentsAPI
 import io.mlh.localhackday.blackboard.api.Urls
 import io.mlh.localhackday.blackboard.data.Student
@@ -40,11 +41,14 @@ class StudentRepository(application: Application) {
         InsertAsyncTask(studentDao).execute(student)
     }
 
+    fun get(email: String) : LiveData<Student>? {
+        return studentDao?.get(email)
+    }
+
 
     private companion object {
 
-        class InsertAsyncTask(dao: StudentDao?) : AsyncTask<Student, Void, Void>() {
-            private var dao: StudentDao? = dao
+        class InsertAsyncTask(private var dao: StudentDao?) : AsyncTask<Student, Void, Void>() {
 
             override fun doInBackground(vararg params: Student): Void? {
                 val student = params[0]

@@ -1,10 +1,10 @@
 package io.mlh.localhackday.blackboard.ui
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
-import androidx.lifecycle.ViewModel
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import io.mlh.localhackday.blackboard.R
 import io.mlh.localhackday.blackboard.data.Student
@@ -13,14 +13,15 @@ import io.mlh.localhackday.blackboard.repository.StudentRepository
 import io.mlh.localhackday.blackboard.repository.TeacherRepository
 import io.mlh.localhackday.blackboard.viewmodel.StudentViewModel
 import kotlinx.android.synthetic.main.activity_login.*
-import retrofit2.Callback
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 
 class LoginActivity : AppCompatActivity() {
 
-    private var studentViewModel:  StudentViewModel? = null
+    private var studentViewModel: StudentViewModel? = null
+
     companion object {
         const val LOGIN_TYPE_INTENT_EXTRA = "login.type"
         const val LOGIN_TYPE_INTENT_STUDENT = "login.type.student"
@@ -35,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        ViewModelProviders.of(this).get(StudentViewModel::class.java)
+        studentViewModel = ViewModelProviders.of(this).get(StudentViewModel::class.java)
     }
 
     private fun setupListeners() {
@@ -52,24 +53,35 @@ class LoginActivity : AppCompatActivity() {
 
                     //val student = studentViewModel?.getLoginResults(email, password)
                     //Log.d("test",student.toString())
-                    if(intent.getStringExtra(LOGIN_TYPE_INTENT_EXTRA) == LOGIN_TYPE_INTENT_STUDENT) {
-                            val loginCall = StudentRepository(application).getLoginResults(email, password)
+                    if (intent.getStringExtra(LOGIN_TYPE_INTENT_EXTRA) == LOGIN_TYPE_INTENT_STUDENT) {
+                        val loginCall = StudentRepository(application).getLoginResults(email, password)
 
-                            loginCall.enqueue(object : Callback<Student> {
-                                override fun onFailure(call: Call<Student>, t: Throwable) {
-                                    Log.d("test", "failed" + t.message)
-                                    t.printStackTrace()
+                        loginCall.enqueue(object : Callback<Student> {
+                            override fun onFailure(call: Call<Student>, t: Throwable) {
+                                Log.d("test", "failed" + t.message)
+                                t.printStackTrace()
+                            }
+
+                            override fun onResponse(call: Call<Student>, response: Response<Student>) {
+                                if (response.code() == 200) {
+                                    Log.d("test", response.body().toString())
+                                    studentViewModel?.insert(response.body()!!)
+                                    Toast
+                                        .makeText(this@LoginActivity, "Login successfull.", Toast.LENGTH_SHORT)
+                                        .show()
+                                    val i = Intent(this@LoginActivity, StudentsHomeActivity::class.java)
+                                    i.putExtra(StudentsHomeActivity.STUDENT_INTENT_EXTRA, response.body()?.email)
+                                    startActivity(i)
+                                    finish()
+                                } else {
+                                    Log.d("errorCode", response.code().toString())
+                                    Toast
+                                        .makeText(this@LoginActivity, "Incorrect credentials.", Toast.LENGTH_SHORT)
+                                        .show()
                                 }
+                            }
 
-                                override fun onResponse(call: Call<Student>, response: Response<Student>) {
-                                    if(response.code() == 200) {
-                                        Log.d("test", response.body().toString())
-                                    } else {
-                                        Log.d("errorCode", response.code().toString())
-                                    }
-                                }
-
-                            })
+                        })
                     } else {
                         val loginCall = TeacherRepository(application).getLoginResults(email, password)
 
@@ -80,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
                             }
 
                             override fun onResponse(call: Call<Teacher>, response: Response<Teacher>) {
-                                if(response.code() == 200) {
+                                if (response.code() == 200) {
                                     Log.d("test", response.body().toString())
                                 } else {
                                     Log.d("errorCode", response.code().toString())

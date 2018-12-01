@@ -7,10 +7,8 @@ class Subjects
     private $conn;
     private $table;
     private $DB;
-    private $semesterID;
-    private $semesterIDField;
-    private $SubjectID;
-    private $SubjectIDField;
+    private $subjectID;
+    private $subjectIDField;
 
     public function __construct($SubjectID)
     {
@@ -18,17 +16,17 @@ class Subjects
         $this->conn = $this->DB->getConn();
         $this->subjectID = $SubjectID;
 
-        $this->table = "Subjects";
-        $this->semesterIDField = "SubjectID";
+        $this->table = "subjects";
+        $this->subjectIDField = "subjectID";
 
     }
 
     public function getSubjectsDetails()
     {
-        $count = $this->DB->getResultCount($this->table, $this->SubjectIDField, $this->SubjectID);
+        $count = $this->DB->getResultCount($this->table, $this->subjectIDField, $this->subjectID);
 
         if ($count > 0) {
-            return $this->DB->fetchRow($this->table, $this->SubjectIDField, $this->SubjectID);
+            return $this->DB->fetchRow($this->table, $this->subjectIDField, $this->subjectID);
         } else {
             return false;
         }
