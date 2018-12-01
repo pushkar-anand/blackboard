@@ -47,10 +47,10 @@ abstract class TeacherSemRecyclerAdapter(context: Context) :
     override fun onBindViewHolder(holder: SemViewHolder, position: Int) {
         if (semesters != null){
             val semester = semesters!![position]
-            holder.semesterTV.text = semester.Semester
+            holder.semesterTV.text = semester.Semester.toString()
 
             holder.SemItemCard.setOnClickListener {
-                onSemClickListener?.onClick(semester.Semester)
+                onSemClickListener?.onClick(semester)
             }
         }
     }
