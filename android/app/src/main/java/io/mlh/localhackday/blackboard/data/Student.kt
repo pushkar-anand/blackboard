@@ -18,6 +18,4 @@ data class Student(
     val token: String,
     val tokenGen: String
 
-) {
-
-}
+)

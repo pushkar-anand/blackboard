@@ -8,7 +8,7 @@ import retrofit2.http.POST
 
 interface TeachersAPI {
         @FormUrlEncoded
-        @POST("/teachers/login")
+        @POST("/teacher/login")
         fun getLoginResults(
             @Field("email") email: String,
             @Field("password") password: String
