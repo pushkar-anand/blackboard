@@ -10,6 +10,8 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity android:name=".UI.LoginActivity">
+        </activity>
+        <activity android:name=".UI.LauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
