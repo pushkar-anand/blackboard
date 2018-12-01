@@ -18,6 +18,16 @@ if (isset($_GET['email']) && isset($_GET['token'])) {
             $subJSON = $semesterDetails['subjects'];
             $subArray = json_decode($subJSON);
 
+            $x = array();
+
+            foreach ($subArray as $id) {
+                $subject = new Subjects($id);
+                array_push($x, $subject->getSubjectsDetails());
+            }
+
+            \PhpUseful\EasyHeaders::json_header();
+            echo json_encode($x);
+
         } else {
             \PhpUseful\EasyHeaders::not_found();
         }
