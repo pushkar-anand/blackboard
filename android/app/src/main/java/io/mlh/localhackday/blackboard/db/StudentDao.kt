@@ -18,4 +18,7 @@ interface StudentDao {
 
     @Query("SELECT * FROM students WHERE email = :email")
     fun get(email: String): LiveData<Student>
+
+    @Query("SELECT * FROM students")
+    fun getAll(email: String): LiveData<List<Student>>
 }

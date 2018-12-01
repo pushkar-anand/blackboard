@@ -20,4 +20,7 @@
     <string name="title_activity_students_home">Home</string>
     <string name="sem">Semester</string>
     <string name="subject">Subject</string>
+
+    <string name="upload">Upload Files</string>
+    <string name="notify">Send Notification</string>
 </resources>
