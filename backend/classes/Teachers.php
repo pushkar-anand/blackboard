@@ -2,7 +2,7 @@
 
 require_once __DIR__ . "/../vendor/autoload.php";
 
-class Student
+class Teachers
 {
 
     private $conn;
@@ -18,7 +18,7 @@ class Student
     {
         $this->DB = new DB();
         $this->conn = $this->DB->getConn();
-        $this->table = "students";
+        $this->table = "teachers";
 
         $this->email = $email;
         $this->emailField = "email";
@@ -26,7 +26,7 @@ class Student
         $this->tokenGenField = "tokenGen";
     }
 
-    public function getStudent()
+    public function getTeachers()
     {
         $count = $this->DB->getResultCount($this->table, $this->emailField, $this->email);
         if ($count > 0) {
