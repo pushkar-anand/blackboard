@@ -18,10 +18,10 @@ if (isset($_GET['email']) && isset($_GET['token'])) {
         if ($semesterDetails !== false && $semesterDetails !== null) {
             $subJSON = $semesterDetails['subjects'];
             $subArray = json_decode($subJSON);
-
             $x = array();
 
             foreach ($subArray as $id) {
+                var_dump($id);
                 $subject = new Subjects($id);
                 array_push($x, $subject->getSubjectsDetails());
             }
