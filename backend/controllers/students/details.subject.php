@@ -1,7 +1,42 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: pushkar
- * Date: 1/12/18
- * Time: 3:34 PM
- */
+
+
+if (isset($_GET['email']) && isset($_GET['token'])) {
+
+    $email = \PhpUseful\Functions::escapeInput($_GET['email']);
+    $token = \PhpUseful\Functions::escapeInput($_GET['token']);
+
+    $student = new Student($email);
+    if ($student->verifyToken($token)) {
+        $studentDetails = $student->getStudent();
+        $sem_id = $studentDetails['semesterID'];
+
+        $semester = new Semester($sem_id);
+        $semesterDetails = $semester->getSemesterDetails();
+
+        if ($semesterDetails !== false && $semesterDetails !== null) {
+            $subJSON = $semesterDetails['subjects'];
+            $subArray = json_decode($subJSON);
+
+            $x = array();
+
+            foreach ($subArray as $id) {
+                $subject = new Subjects($id);
+                array_push($x, $subject->getSubjectsDetails());
+            }
+
+            \PhpUseful\EasyHeaders::json_header();
+            echo json_encode($x);
+
+        } else {
+            \PhpUseful\EasyHeaders::not_found();
+        }
+
+    } else {
+        \PhpUseful\EasyHeaders::unauthorized();
+    }
+
+} else {
+
+    \PhpUseful\EasyHeaders::bad_request();
+}
