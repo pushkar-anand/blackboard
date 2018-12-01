@@ -11,22 +11,24 @@ if( isset($_POST['email']) && isset($_POST['password'])) {
     $pwd = $_POST['password'];
 
     $teachers = new Teachers($email);
-    $studentDetails = $teachers->getTeachers();
+    $teachersDetails = $teachers->getTeachers();
 
-    if($studentDetails !== false && $studentDetails !== null) {
+    if ($teachersDetails !== false && $teachersDetails !== null) {
 
-        if(password_verify($pwd, $studentDetails['password'])) {
+        if (password_verify($pwd, $teachersDetails['password'])) {
 
             $random = Functions::randomString(25);
             $time = time();
 
             $teachers->updateToken($random, $time);
             $teachers = new Teachers($email);
-            $studentDetails = $teachers->getTeachers();
-            unset($studentDetails['password']);
+            $teachersDetails = $teachers->getTeachers();
+            unset($teachersDetails['password']);
 
             EasyHeaders::json_header();
-            echo json_encode($studentDetails);
+            echo json_encode($teachersDetails);
+        } else {
+            EasyHeaders::unauthorized();
         }
 
     } else {
