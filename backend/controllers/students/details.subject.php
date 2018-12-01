@@ -17,6 +17,7 @@ if (isset($_GET['email']) && isset($_GET['token'])) {
 
         if ($semesterDetails !== false && $semesterDetails !== null) {
             $subJSON = $semesterDetails['subjects'];
+            var_dump($subJSON);
             $subArray = json_decode($subJSON);
             var_dump($subArray);
             $x = array();
