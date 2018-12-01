@@ -3,21 +3,19 @@ package io.mlh.localhackday.blackboard.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+
 @Entity(
-    tableName = "students"
+    tableName = "teachers"
 )
-
-data class Students(
+data class Teacher(
     @PrimaryKey(autoGenerate = false)
-    val studentID:Long,
+    val teachersID:Long,
 
-    val name:String,
-    val email:String,
+    val name: String,
+    val email: String,
     val password: String,
-    val semesterID: Long,
+    val semesters: String,
     val token: String,
     val tokenGen: String
-
 ) {
-
 }
