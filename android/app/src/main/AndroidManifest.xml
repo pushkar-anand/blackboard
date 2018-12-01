@@ -24,9 +24,9 @@
                 android:name=".ui.StudentsHomeActivity"
                 android:label="@string/title_activity_students_home">
         </activity>
-        <activity android:name=".content_teacher_home">
-        </activity>
         <activity android:name=".ui.TeachersHomeActivity">
+        </activity>
+        <activity android:name=".ui.UploadActivity">
         </activity>
     </application>
 

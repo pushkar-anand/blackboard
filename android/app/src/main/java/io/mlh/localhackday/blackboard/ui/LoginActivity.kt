@@ -62,7 +62,11 @@ class LoginActivity : AppCompatActivity() {
                                 }
 
                                 override fun onResponse(call: Call<Student>, response: Response<Student>) {
-                                    Log.d("test", response.body().toString())
+                                    if(response.code() == 200) {
+                                        Log.d("test", response.body().toString())
+                                    } else {
+                                        Log.d("errorCode", response.code().toString())
+                                    }
                                 }
 
                             })
@@ -76,7 +80,11 @@ class LoginActivity : AppCompatActivity() {
                             }
 
                             override fun onResponse(call: Call<Teacher>, response: Response<Teacher>) {
-                                Log.d("test", response.body().toString())
+                                if(response.code() == 200) {
+                                    Log.d("test", response.body().toString())
+                                } else {
+                                    Log.d("errorCode", response.code().toString())
+                                }
                             }
 
                         })
