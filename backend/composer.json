@@ -1,0 +1,12 @@
+{
+    "name": "blackboard/backend",
+    "type": "project",
+    "license": "GNU GPL V3",
+    "authors": [
+        {
+            "name": "Pushkar Anand",
+            "email": "anandpushkar088@gmail.com"
+        }
+    ],
+    "require": {}
+}
