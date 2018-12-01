@@ -18,6 +18,7 @@ class Subjects
 
         $this->table = "subjects";
         $this->subjectIDField = "subjectID";
+        $this->subjectID = $SubjectID;
 
     }
 
