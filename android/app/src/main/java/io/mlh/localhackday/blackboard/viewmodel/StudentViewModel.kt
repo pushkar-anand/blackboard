@@ -8,10 +8,10 @@ import retrofit2.Call
 
 class StudentViewModel(application: Application) : AndroidViewModel(application) {
 
-    val studentRepository = StudentRepository();
+    private val studentRepository = StudentRepository(application)
 
 
-    fun getLoginResults(email: String, password:String): Student? {
+    fun getLoginResults(email: String, password:String): Call<Student> {
         return studentRepository.getLoginResults(email, password)
     }
 }
