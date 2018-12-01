@@ -10,7 +10,8 @@
     ],
     "require": {
         "pushkar/php-useful": "^1.0",
-        "pushkar/easy-router": "^0.1.2"
+        "pushkar/easy-router": "^0.1.2",
+      "ext-mysqli": "*"
     },
 
     "autoload": {
