@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . "/../../vendor/autoload.php";
 
 if (isset($_GET['email']) && isset($_GET['token'])) {
 

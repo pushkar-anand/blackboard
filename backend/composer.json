@@ -21,7 +21,8 @@
             "classes/DB.php",
             "classes/Student.php",
             "classes/Teachers.php",
-            "classes/Semester.php"
+            "classes/Semester.php",
+            "classes/Subjects.php"
         ]
     }
 }
