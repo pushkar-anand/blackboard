@@ -25,14 +25,14 @@ if( isset($_POST['email']) && isset($_POST['password'])) {
             $studentDetails = $student->getStudent();
             unset($studentDetails['password']);
 
-            $sem_id = $studentDetails['semesterID'];
+            /*$sem_id = $studentDetails['semesterID'];
 
             $semester = new Semester($sem_id);
             $semesterDetails = $semester->getSemesterDetails();
 
             if ($semesterDetails !== false && $semesterDetails !== null) {
                 $studentDetails["semesterInfo"] = $semesterDetails;
-            }
+            }*/
 
             EasyHeaders::json_header();
             echo json_encode($studentDetails);
