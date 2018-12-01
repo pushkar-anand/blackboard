@@ -1,0 +1,104 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "b8b5ea72e46ad58bd83efadf923da354",
+    "packages": [
+        {
+            "name": "pushkar/easy-router",
+            "version": "v0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pushkar-anand/easy-router.git",
+                "reference": "98c9fafebae2b78a94e09eebe9f46245d31fc8f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pushkar-anand/easy-router/zipball/98c9fafebae2b78a94e09eebe9f46245d31fc8f7",
+                "reference": "98c9fafebae2b78a94e09eebe9f46245d31fc8f7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EasyRoute\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pushkar Anand",
+                    "email": "anandpushkar088@gmail.com"
+                }
+            ],
+            "description": "Easiest way to add route to your php application.",
+            "homepage": "https://github.com/pushkar-anand/easy-route",
+            "keywords": [
+                "Simple",
+                "easy",
+                "router"
+            ],
+            "time": "2018-06-17T15:42:25+00:00"
+        },
+        {
+            "name": "pushkar/php-useful",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pushkar-anand/php-useful.git",
+                "reference": "20626e53d3b6514bf8cd7ff46546f0f79f812697"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pushkar-anand/php-useful/zipball/20626e53d3b6514bf8cd7ff46546f0f79f812697",
+                "reference": "20626e53d3b6514bf8cd7ff46546f0f79f812697",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpUseful\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pushkar Anand",
+                    "email": "anandpushkar088@gmail.com"
+                }
+            ],
+            "description": "Contains various classes and functions to many common tasks in PHP.",
+            "homepage": "https://github.com/pushkar-anand/php-useful",
+            "time": "2018-10-09T08:47:46+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
