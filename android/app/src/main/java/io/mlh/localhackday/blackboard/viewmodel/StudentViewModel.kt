@@ -14,4 +14,8 @@ class StudentViewModel(application: Application) : AndroidViewModel(application)
     fun getLoginResults(email: String, password:String): Call<Student> {
         return studentRepository.getLoginResults(email, password)
     }
+
+    fun insert(student: Student) {
+        studentRepository.insert(student)
+    }
 }
