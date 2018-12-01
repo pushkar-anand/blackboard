@@ -1,4 +1,4 @@
-package io.mlh.localhackday.blackboard.UI
+package io.mlh.localhackday.blackboard.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
