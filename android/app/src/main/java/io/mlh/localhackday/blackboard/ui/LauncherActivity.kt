@@ -11,17 +11,21 @@ class LauncherActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launcher)
+        setupListeners()
     }
-    fun setupListeners()
-    {
-       student.setOnClickListener {
-           val intent = Intent(this, LoginActivity::class.java)
-           startActivity(intent)
-        teacher.setOnClickListener{
-            val intent = Intent(this,LoginActivity::class.java)
+
+    private fun setupListeners() {
+        student.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.putExtra(LoginActivity.LOGIN_TYPE_INTENT_EXTRA, LoginActivity.LOGIN_TYPE_INTENT_STUDENT)
             startActivity(intent)
         }
-       }
+        teacher.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.putExtra(LoginActivity.LOGIN_TYPE_INTENT_EXTRA, LoginActivity.LOGIN_TYPE_INTENT_TEACHER)
+            startActivity(intent)
+        }
     }
+
 }
 

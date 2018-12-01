@@ -43,6 +43,7 @@ dependencies {
     implementation 'com.afollestad.material-dialogs:core:2.0.0-beta5'
     implementation 'com.afollestad.material-dialogs:input:2.0.0-beta5'
 
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha1'
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
     kapt "androidx.room:room-compiler:$room_version"
 
