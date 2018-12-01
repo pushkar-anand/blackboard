@@ -10,6 +10,9 @@ import io.mlh.localhackday.blackboard.data.Student
 abstract class BlackboardDatabase : RoomDatabase() {
 
     abstract fun studentDao(): StudentDao
+    abstract fun teacherDao(): TeacherDao
+    abstract fun subjectDao(): SubjectDao
+    abstract fun semesterDao(): SemesterDao
 
     companion object {
 
