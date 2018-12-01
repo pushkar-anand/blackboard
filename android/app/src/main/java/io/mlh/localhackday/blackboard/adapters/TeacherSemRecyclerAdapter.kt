@@ -24,11 +24,11 @@ abstract class TeacherSemRecyclerAdapter(context: Context) :
 
     class SemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val SemItemCard: MaterialCardView = itemView.findViewById(R.id.semester_Item_Card)
-        val subjectNameTV: TextView = itemView.findViewById(R.id.subject_name)
+        val semesterTV: TextView = itemView.findViewById(R.id.semester)
     }
 
     interface OnSemClickListener{
-        fun onClick(subject: Subjects)
+        fun onClick(semester: Semesters)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SemViewHolder {
@@ -47,10 +47,10 @@ abstract class TeacherSemRecyclerAdapter(context: Context) :
     override fun onBindViewHolder(holder: SemViewHolder, position: Int) {
         if (semesters != null){
             val semester = semesters!![position]
-            holder.subjectNameTV.text = semester.subjects
+            holder.semesterTV.text = semester.Semester
 
             holder.SemItemCard.setOnClickListener {
-                onSemClickListener?.onClick(semester.subjects)
+                onSemClickListener?.onClick(semester.Semester)
             }
         }
     }
