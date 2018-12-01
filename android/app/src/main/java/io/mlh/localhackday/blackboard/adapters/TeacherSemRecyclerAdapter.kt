@@ -55,11 +55,11 @@ abstract class TeacherSemRecyclerAdapter(context: Context) :
         }
     }
 
-    fun setOnSubjectClickListener(onSubjectClickListener: OnSemClickListener){
-        this.onSemClickListener = onSubjectClickListener
+    fun setOnSemClickListener(onSemClickListener: OnSemClickListener){
+        this.onSemClickListener = onSemClickListener
     }
 
-    fun setSubjects(subjects: List<Subjects>){
+    fun setSem(semester: List<Semesters>){
         this.semesters = semesters
         notifyDataSetChanged()
     }
